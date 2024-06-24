@@ -1,0 +1,6 @@
+generations/
+kaggle_datasets/
+pokemons/
+*.pdf
+*.tar.gz
+*.lock
