@@ -113,6 +113,21 @@ history = custom_model.fit(
 
 ![](./docs/Figure_12.png)
 
+<div>
+    <img src="./docs/Matrix_1.png" width="49%"/>
+    <img src="./docs/Matrix_3.png" width="49%"/>
+</div>
+
+<div>
+    <img src="./docs/Matrix_5.png" width="49%"/>
+    <img src="./docs/Matrix_7.png" width="49%"/>
+</div>
+
+Here we can see that the images are classified correctly most of the time, but
+the disparity between the number of images in each class can lead to a bias in
+the classification as the first class "gen 1" has more images than the other
+classes.
+
 ## Module 4 (21 points)
 
 > [!NOTE]
@@ -121,3 +136,19 @@ history = custom_model.fit(
 > annotation and rectangle annotation for annotating object on images to enhance
 > the dataset and measure the accuracy.
 
+For this module, I will use the Pokemon Conquest dataset[^2] to add custom
+images to the dataset. The images are annotated using the same classes as the
+previous dataset.
+
+<div>
+    <img src="./docs/Matrix_2.png" width="49%"/>
+    <img src="./docs/Matrix_4.png" width="49%"/>
+</div>
+
+<div>
+    <img src="./docs/Matrix_6.png" width="49%"/>
+    <img src="./docs/Matrix_8.png" width="49%"/>
+</div>
+
+[^2]: https://veekun.com/dex/downloads,
+https://veekun.com/static/pokedex/downloads/pokemon-conquest.tar.gz
