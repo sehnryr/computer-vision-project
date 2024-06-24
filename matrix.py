@@ -111,14 +111,40 @@ for model_name in model_names:
 # Load custom model
 model = keras.models.load_model('models/custom.h5')
 
-all_preds = np.argmax(model.predict(DataLoaderWrapper(val_loader)), axis=1)
-all_labels = [label for _, label in DataLoaderWrapper(val_loader)]
+all_inputs = []
+all_labels = []
+
+for inputs, labels in val_loader:
+    # Transpose the inputs to match the expected shape (batch_size, height, width, channels)
+    inputs = np.transpose(inputs.numpy(), (0, 2, 3, 1))
+    all_inputs.append(inputs)
+    all_labels.append(labels.numpy())
+
+# Stack inputs and labels
+all_inputs = np.vstack(all_inputs)
+all_labels = np.hstack(all_labels)
+
+# Make predictions
+all_preds = np.argmax(model.predict(all_inputs), axis=1)
 
 cm = confusion_matrix(all_labels, all_preds, labels=range(len(classes)))
 plot_confusion_matrix(cm, classes, title='Custom Model Validation Confusion Matrix')
 
-all_preds = np.argmax(model.predict(DataLoaderWrapper(test_loader)), axis=1)
-all_labels = [label for _, label in DataLoaderWrapper(test_loader)]
+all_inputs = []
+all_labels = []
+
+for inputs, labels in test_loader:
+    # Transpose the inputs to match the expected shape (batch_size, height, width, channels)
+    inputs = np.transpose(inputs.numpy(), (0, 2, 3, 1))
+    all_inputs.append(inputs)
+    all_labels.append(labels.numpy())
+
+# Stack inputs and labels
+all_inputs = np.vstack(all_inputs)
+all_labels = np.hstack(all_labels)
+
+# Make predictions
+all_preds = np.argmax(model.predict(all_inputs), axis=1)
 
 cm = confusion_matrix(all_labels, all_preds, labels=range(len(classes)))
 plot_confusion_matrix(cm, classes, title='Custom Model Test Confusion Matrix')
