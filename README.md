@@ -113,6 +113,7 @@ history = custom_model.fit(
 
 > [!NOTE]
 > Enrich the dataset by adding custom images. Add and annotate images based
-> on yout computer vision problem. For example, this coul be semantic annotation
-> and rectangle annotation for annotating object on images to enhance the
-> dataset and measure the accuracy.
+> on yout computer vision problem. For example, this could be semantic
+> annotation and rectangle annotation for annotating object on images to enhance
+> the dataset and measure the accuracy.
+
