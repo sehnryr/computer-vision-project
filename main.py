@@ -212,6 +212,7 @@ logger.debug('Saving the models')
 os.makedirs('models', exist_ok=True)
 for model_name, model in models.items():
     torch.save(model.state_dict(), f'models/{model_name}.pth')
+custom_model.save('models/custom.h5')
 
 # Plot the validation losses
 plt.figure(figsize=(12, 4))
