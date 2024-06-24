@@ -50,9 +50,9 @@ The classes chosen are the first 5 generations of Pokemon. The model is trained
 to detect these classes on images. MobileNetV3Small and DenseNet121 are also
 tested to compare the results.
 
-![](./docs/Figure_7.png)
+![](./docs/Figure_9.png)
 
-![](./docs/Figure_5.png)
+![](./docs/Figure_10.png)
 
 To improve the results, we can use those 3 models in conjunction with a voting
 system to classify the images.
@@ -109,9 +109,9 @@ history = custom_model.fit(
 )
 ```
 
-![](./docs/Figure_8.png)
+![](./docs/Figure_11.png)
 
-![](./docs/Figure_6.png)
+![](./docs/Figure_12.png)
 
 ## Module 4 (21 points)
 
