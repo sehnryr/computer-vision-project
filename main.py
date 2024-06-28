@@ -154,15 +154,38 @@ val_accuracies = {model_name: [] for model_name in models.keys()}
 
 # Create custom model using Keras.Sequential
 custom_model = keras.Sequential([
-    keras.layers.Conv2D(32, (3, 3), input_shape=(input_size[0], input_size[1], 3), activation='relu'),
-    keras.layers.MaxPooling2D(pool_size=(2, 2)),
+    keras.layers.Conv2D(
+        32, # dimension of the output space
+        (3, 3), # size of the convolution window
+        strides=(1, 1), # stride length of the convolution (default is 1)
+        padding="valid", # either "valid" or "same" (default is "valid")
+        # "valid" means no padding.
+        # "same" results in padding evenly to the left/right or up/down of the input.
+        # if the stride is 1 and the padding is "same", the output has the same size as the input.
+        input_shape=(input_size[0], input_size[1], 3), # shape of the input (height, width, channels)
+        activation='relu' # Activation function
+    ),
+    # MaxPooling2D takes the maximum value from the window of the input volume.
+    # Other types of pooling layers include AveragePooling2D which takes the average value from the window.
+    keras.layers.MaxPooling2D(
+        pool_size=(2, 2), # factors by which to downscale (default is 2)
+        strides=None, # stride length of the pooling (default is None)
+        padding="valid" # either "valid" or "same" (default is "valid")
+    ),
     keras.layers.Conv2D(64, (3, 3), activation='relu'),
     keras.layers.MaxPooling2D(pool_size=(2, 2)),
     keras.layers.Flatten(),
     keras.layers.Dense(64, activation='relu'),
     keras.layers.Dense(num_classes, activation='softmax')
+    # Softmax activation function used for multi-class classification (0 to 1, sum to 1)
+    # ReLU activation function used for hidden layers due to its efficiency and vanishing gradient mitigation property (0 to infinity)
+    # Sigmoid activation function used for binary classification (smooth gradient from 0 to 1)
 ])
-custom_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+custom_model.compile(
+    optimizer='adam',
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
+)
 
 # Train the custom model
 logger.info('Training the custom model')
