@@ -50,9 +50,9 @@ The classes chosen are the first 5 generations of Pokemon. The model is trained
 to detect these classes on images. MobileNetV3Small and DenseNet121 are also
 tested to compare the results.
 
-![](./docs/Figure_9.png)
+![](./docs/Figure_13.png)
 
-![](./docs/Figure_10.png)
+![](./docs/Figure_14.png)
 
 To improve the results, we can use those 3 models in conjunction with a voting
 system to classify the images.
@@ -74,7 +74,7 @@ custom_model = keras.Sequential([
     keras.layers.Dense(64, activation='relu'),
     keras.layers.Dense(num_classes, activation='softmax')
 ])
-custom_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+custom_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy', 'f1_score'])
 ```
 
 The custom model is a simple CNN with 2 convolutional layers and 2 max pooling
@@ -109,18 +109,18 @@ history = custom_model.fit(
 )
 ```
 
-![](./docs/Figure_11.png)
+![](./docs/Figure_15.png)
 
-![](./docs/Figure_12.png)
+![](./docs/Figure_16.png)
 
 <div>
-    <img src="./docs/Matrix_1.png" width="49%"/>
-    <img src="./docs/Matrix_3.png" width="49%"/>
+    <img src="./docs/Matrix_9.png" width="49%"/>
+    <img src="./docs/Matrix_11.png" width="49%"/>
 </div>
 
 <div>
-    <img src="./docs/Matrix_5.png" width="49%"/>
-    <img src="./docs/Matrix_7.png" width="49%"/>
+    <img src="./docs/Matrix_13.png" width="49%"/>
+    <img src="./docs/Matrix_15.png" width="49%"/>
 </div>
 
 Here we can see that the images are classified correctly most of the time, but
@@ -141,13 +141,13 @@ images to the dataset. The images are annotated using the same classes as the
 previous dataset.
 
 <div>
-    <img src="./docs/Matrix_2.png" width="49%"/>
-    <img src="./docs/Matrix_4.png" width="49%"/>
+    <img src="./docs/Matrix_10.png" width="49%"/>
+    <img src="./docs/Matrix_12.png" width="49%"/>
 </div>
 
 <div>
-    <img src="./docs/Matrix_6.png" width="49%"/>
-    <img src="./docs/Matrix_8.png" width="49%"/>
+    <img src="./docs/Matrix_14.png" width="49%"/>
+    <img src="./docs/Matrix_16.png" width="49%"/>
 </div>
 
 [^2]: https://veekun.com/dex/downloads,
