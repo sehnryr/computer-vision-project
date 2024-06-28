@@ -184,7 +184,12 @@ custom_model = keras.Sequential([
 custom_model.compile(
     optimizer='adam',
     loss='categorical_crossentropy',
-    metrics=['accuracy']
+    metrics=['accuracy', 'f1_score']
+    # f1_score is the harmonic mean of precision and recall (aka sensitivity).
+    # The precision is ratio of correctly predicted positive observations to the total predicted positives. TP/(TP+FP)
+    # The recall is the ratio of correctly predicted positive observations to the all observations in actual class. TP/(TP+FN)
+    # F1 Score = 2 * (Precision * Recall) / (Precision + Recall)
+    # It is particularly useful when the classes are imbalanced.
 )
 
 # Train the custom model
